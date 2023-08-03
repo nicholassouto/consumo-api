@@ -15,6 +15,10 @@ export default {
     mint: "#04D361",
   },
 
+  tomato: {
+    tomato: "#750310",
+  },
+
   fonts: {
     roboto: "'Roboto', sans-serif;",
   },

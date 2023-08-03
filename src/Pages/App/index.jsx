@@ -10,6 +10,7 @@ export function App() {
   const [selectedTitle, setSelectedTitle] = useState("");
   const [selectedComments, setSelectedComments] = useState([]);
   const [isCommentBoxOpen, setIsCommentBoxOpen] = useState(false);
+  const [readComments, setReadComments] = useState([]);
 
   const capitalizeFirstLetter = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -26,6 +27,7 @@ export function App() {
     setSelectedTitle(postTitle);
     setSelectedComments(comments);
     setIsCommentBoxOpen(true);
+    setReadComments((prevReadComments) => ({ ...prevReadComments, [postId]: true }));
   }
 
   function handleCommentClose() {
@@ -60,7 +62,11 @@ export function App() {
             <h3
               onClick={() => handlePostSelected(post.id, post.title, post.comments)}
               className={
-                isCommentBoxOpen && (selectedPost === post.id || selectedTitle === post.title) ? "selected" : ""
+                isCommentBoxOpen && (selectedPost === post.id || selectedTitle === post.title)
+                  ? "selected"
+                  : readComments[post.id]
+                  ? "read"
+                  : ""
               }
             >
               {`${post.id} - ${capitalizeFirstLetter(post.title)}`}
@@ -84,7 +90,11 @@ export function App() {
               <h3
                 onClick={() => handlePostSelected(post.id, post.title, post.comments)}
                 className={
-                  isCommentBoxOpen && (selectedPost === post.id || selectedTitle === post.title) ? "selected" : ""
+                  isCommentBoxOpen && (selectedPost === post.id || selectedTitle === post.title)
+                    ? "selected"
+                    : readComments[post.id]
+                    ? "read"
+                    : ""
                 }
               >
                 {post.id}

@@ -15,6 +15,10 @@ export const Container = styled.div`
     color: ${({ theme }) => theme.mint.mint};
   }
 
+  .read {
+    color: ${({ theme }) => theme.tomato.tomato};
+  }
+
   > main {
     overflow-y: auto;
     grid-area: content;
@@ -82,7 +86,7 @@ export const Container = styled.div`
         border: 1px solid;
         border-radius: 0.5rem;
 
-        h3:hover{
+        h3:hover {
           cursor: pointer;
         }
       }
